@@ -1,15 +1,123 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}New Post{% endblock %}</h1>
+    <h1>{% block title %}New Post{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-    <label for="title">Title</label>
-    <input name="title" id="title" value="{{ request.form['title'] }}" required><br />
-    <label for="body">Body</label>
-    <textarea name="body" id="body">{{ request.form['body'] }}</textarea><br />
-    <input type="submit" value="Save">
-  </form>
+    <h1>Keyword Development</h1>
+    <form method="post">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="story-title" name="story-title" placeholder="Story Title"
+                   value="{{ request.form['title'] }}" required>
+            <label for="story-title">Story:</label>
+        </div>
+        <div class="bg-dark text-light text-center py-3">
+            <h2>Keywords</h2>
+        </div>
+        <div class="row">
+            <div class="col-3 d-none d-sm-block">
+                <img src="#" class="img-fluid"/>
+            </div>
+            <div class="col">
+                <h3>What is most audience about this story?</h3>
+                <p><em>what am I going to go tell my friends about?</em></p>
+                {% for kw_number in kw_numbers %}
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text">01.{{ kw_number }}</span>
+                        <input class="form-control" type="text" name="inspiring-keyword-{{ kw_number }}">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-3 d-none d-sm-block">
+                <img src="#" class="img-fluid" alt="diamond"/>
+            </div>
+            <div class="col">
+                <h3>What most makes this story different? Uniqueness</h3>
+                <p><em>What most makes this story different? Uniqueness</em></p>
+                {% for kw_number in kw_numbers %}
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text">02.{{ kw_number }}</span>
+                        <input class="form-control" type="text" name="unique-keyword-{{ kw_number }}">
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row mt-3">
+                <div class="col-3 d-none d-sm-block">
+                    <img src="#" class="img-fluid" alt="audience"/>
+                </div>
+                <div class="col">
+                    <h3>Describe the typical audience member</h3>
+                    <p><em>What most makes this story different? Uniqueness</em></p>
+                    {% for kw_number in kw_numbers %}
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text">03.{{ kw_number }}</span>
+                            <input class="form-control" type="text" name="audience-keyword-{{ kw_number }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-3 d-none d-sm-block">
+                    <img src="#" class="img-fluid" alt="temperature"/>
+                </div>
+                <div class="col">
+                    <h3>How do we want the audience to feel?</h3>
+                     {% for kw_number in kw_numbers %}
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text">04.{{ kw_number }}</span>
+                            <input class="form-control" type="text" name="feel-keyword-{{ kw_number }}">
+                        </div>
+                    {% endfor %}
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text">02.</span>
+                        <input class="form-control" type="text" name="feel-keyword-2">
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text">03.</span>
+                        <input class="form-control" type="text" name="feel-keyword-3">
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text">04.</span>
+                        <input class="form-control" type="text" name="feel-keyword-4">
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text">05.</span>
+                        <input class="form-control" type="text" name="feel-keyword-5">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-3 d-none d-sm-block">
+                    <img src="#" class="img-fluid" alt="temperature"/>
+                </div>
+                <div class="col">
+                    <h3>How do we want the audience to feel?</h3>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text">01.</span>
+                        <input class="form-control" type="text" name="feel-keyword-1">
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text">02.</span>
+                        <input class="form-control" type="text" name="feel-keyword-2">
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text">03.</span>
+                        <input class="form-control" type="text" name="feel-keyword-3">
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text">04.</span>
+                        <input class="form-control" type="text" name="feel-keyword-4">
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text">05.</span>
+                        <input class="form-control" type="text" name="feel-keyword-5">
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" value="Save">
+    </form>
 {% endblock %}

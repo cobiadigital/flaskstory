@@ -5,6 +5,9 @@ from werkzeug.exceptions import abort
 
 from flaskstory.auth import login_required
 from flaskstory.db import get_db
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from wtforms.validators import DataRequired
 
 bp = Blueprint('blog', __name__)
 @bp.route('/')
@@ -20,9 +23,12 @@ def index():
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
+    kw_numbers = list(range(1, 5+1))
+
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
+
         error = None
 
         if not title:
@@ -40,7 +46,7 @@ def create():
             db.commit()
             return redirect(url_for('blog.index'))
 
-    return render_template('blog/create.html')
+    return render_template('blog/create.html', kw_numbers=kw_numbers)
 
 def get_post(id, check_author=True):
     post = get_db().execute(
